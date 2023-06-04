@@ -1,25 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import Container from "./Container";
+import Footer from "./Footer";
+import Form from "./Form";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<Container>
+			<Form legend={"Kaltulator walut"} />
+			<Footer body={"Wartość walut z dnia 03.02.2022 "} />
+    </Container>
+	);
 }
 
 export default App;

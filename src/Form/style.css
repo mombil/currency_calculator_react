@@ -1,0 +1,24 @@
+.form{  
+  margin-top: 30px;
+}
+
+.form__legend {
+  padding: 10px;
+  background-color: #999;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.form__fieldset{
+  background-color:  hsl(180, 84%, 35%);;
+  border-radius: 10px;
+  padding: 20px, 10px;
+}
+
+.form__label {
+  font-size: 18px;
+}
+
+.form__text{
+  font-size: 18px;
+}
