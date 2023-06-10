@@ -6,27 +6,15 @@ const Form = () => {
 	const [amount, setAmount] = useState(0);
 	const [selects, setSelects] = useState("EUR");
 	const [result, setResult] = useState("N/A");
-	const [sign, setSign] = useState("");
 
 	const calculateResult = () => {
-		switch (selects) {
-			case "EUR":
-				setResult(amount / currencies[0].rate);
-				setSign("€");
-				break;
+		const rate = currencies.find(({ name }) => name === selects).rate;
+		const sign = currencies.find(({ name }) => name === selects).sign;
 
-			case "GBP":
-				setResult(amount / currencies[1].rate);
-				setSign("£");
-				break;
-
-			case "USD":
-				setResult(amount / currencies[2].rate);
-				setSign("$");
-				break;
-
-			default:
-		}
+		setResult({
+			result: amount / rate,
+			sign: sign,
+		});
 	};
 
 	const onFormSubmit = event => {
@@ -75,7 +63,7 @@ const Form = () => {
 					<strong>
 						{typeof result === "string"
 							? " N/A"
-							: " " + result.toFixed(2) + " " + sign}
+							: " " + result.result.toFixed(2) + " " + result.sign}
 					</strong>
 				</p>
 			</fieldset>
