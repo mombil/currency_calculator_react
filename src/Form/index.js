@@ -59,6 +59,7 @@ const Form = ({ legend }) => {
 				<label className="form__label">
 					Podaj kwotę w PLN:
 					<input
+						className="form__input"
 						type="number"
 						min="0"
 						step="any"

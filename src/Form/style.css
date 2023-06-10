@@ -1,40 +1,46 @@
-.form{  
-  margin: 20px;
+.form {
+	margin: 20px;
 }
 
 .form__legend {
-  padding: 10px;
-  background-color: #999;
-  border-radius: 10px;
-  margin: 10px;
+	padding: 10px;
+	background-color: #999;
+	border-radius: 10px;
+	margin: 10px;
 }
 
-.form__fieldset{
-  background-color:  hsl(180, 84%, 35%);;
-  border-radius: 10px;
-  padding: 20px, 10px;
+.form__fieldset {
+	background-color: hsl(180, 84%, 35%);
+	border-radius: 10px;
+	padding: 20px, 10px;
 }
 
 .form__label {
-  font-size: 18px;
-  padding: 5px;
+	font-size: 18px;
+	padding: 5px;
 }
 
-.form__text{
-  font-size: 18px;
+.form__text {
+	font-size: 18px;
 }
 
-.form__button{
-  border: none;
+.form__button {
+	border: none;
 	cursor: pointer;
-  border-radius: 5px;
+	border-radius: 5px;
 	background-color: #eee;
 	margin: 5px;
 	padding: 5px;
 	transition: 0.4s;
 }
 
-.form__select{
-  margin: 5px;
-  padding: 2px;
+.form__select {
+	margin: 5px;
+	padding: 2px;
+}
+
+@media (max-width: 550px) {
+	.form__input {
+		max-width: 120px;
+	}
 }
