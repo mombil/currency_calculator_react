@@ -2,7 +2,7 @@ import { useState } from "react";
 import currencies from "./currencies";
 import "./style.css";
 
-const Form = ({ legend }) => {
+const Form = () => {
 	const [amount, setAmount] = useState(0);
 	const [selects, setSelects] = useState("EUR");
 	const [result, setResult] = useState("N/A");
@@ -38,7 +38,7 @@ const Form = ({ legend }) => {
 	return (
 		<form className="form" onSubmit={onFormSubmit}>
 			<fieldset className="form__fieldset">
-				<legend className="form__legend">{legend}</legend>
+				<legend className="form__legend">Kaltulator walut</legend>
 				<label className="form__label">
 					{" "}
 					Wybierz walutę
@@ -54,8 +54,7 @@ const Form = ({ legend }) => {
 						))}
 					</select>
 				</label>
-				<br />
-				<br />
+
 				<label className="form__label">
 					Podaj kwotę w PLN:
 					<input
@@ -66,10 +65,11 @@ const Form = ({ legend }) => {
 						value={amount}
 						onChange={({ target }) => setAmount(target.value)}
 					/>
+					<button className="form__button" type="submit">
+						Wyślij
+					</button>
 				</label>
-				<button className="form__button" type="submit">
-					Wyślij
-				</button>
+
 				<p className="form__text">
 					Kwota po przeliczeniu wynosi:
 					<strong>

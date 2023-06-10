@@ -5,8 +5,8 @@ import Form from "./Form";
 function App() {
 	return (
 		<Container>
-			<Form legend={"Kaltulator walut"} />
-			<Footer body={"Wartość walut z dnia 03.02.2022 "} />
+			<Form />
+			<Footer />
 		</Container>
 	);
 }
