@@ -1,7 +1,8 @@
 import { useState } from "react";
+import currencies from "./currencies";
 import "./style.css";
 
-const Form = ({ legend, currencies }) => {
+const Form = ({ legend }) => {
 	const [amount, setAmount] = useState(0);
 	const [selects, setSelects] = useState("EUR");
 	const [result, setResult] = useState("N/A");
@@ -44,11 +45,11 @@ const Form = ({ legend, currencies }) => {
 					<select
 						className="form__select"
 						value={selects}
-						onChange={e => setSelects(e.target.value)}
+						onChange={({ target }) => setSelects(target.value)}
 					>
 						{currencies.map(currency => (
-							<option key={currency.key} value={currency.currency}>
-								{currency.currency}
+							<option key={currency.key} value={currency.name}>
+								{currency.name}
 							</option>
 						))}
 					</select>
