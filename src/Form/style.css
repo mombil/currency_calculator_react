@@ -2,11 +2,13 @@
 	margin: 20px;
 }
 
-.form__legend {
+.form__header {
+	display: block;
 	padding: 10px;
 	background-color: #999;
 	border-radius: 10px;
 	margin: 3px;
+	text-align: center;
 }
 
 .form__fieldset {
@@ -46,4 +48,9 @@
 .form__input {
 	max-width: 120px;
 	margin: 3px;
+}
+
+.form__date{
+	text-align: end;
+	font-size: 13px;
 }
