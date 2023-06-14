@@ -3,21 +3,23 @@ import currencies from "./currencies";
 import "./style.css";
 
 const Form = () => {
+
+	const updateDate = () => {
+		let actualDate = new Date();
+		return(
+		actualDate.toLocaleDateString("pl-US", {
+			weekday: "long",
+			day: "numeric",
+			month: "long",
+		}) +
+		", " +
+		actualDate.toLocaleTimeString()
+		)}
+
 	const [amount, setAmount] = useState(0);
 	const [selects, setSelects] = useState("EUR");
 	const [result, setResult] = useState("N/A");
-	const [dateResult, setDateResult] = useState(() => {
-		let actualDate = new Date();
-		return (
-			actualDate.toLocaleDateString("pl-US", {
-				weekday: "long",
-				day: "numeric",
-				month: "long",
-			}) +
-			", " +
-			actualDate.toLocaleTimeString()
-		);
-	});
+	const [dateResult, setDateResult] = useState(updateDate());
 
 	const calculateResult = () => {
 		const rate = currencies.find(({ name }) => name === selects).rate;
@@ -35,17 +37,12 @@ const Form = () => {
 		setAmount(amount);
 	};
 
+	
+
 	useEffect(() => {
 		const intervalID = setInterval(() => {
-			let actualDate = new Date();
 			setDateResult(
-				actualDate.toLocaleDateString("pl-US", {
-					weekday: "long",
-					day: "numeric",
-					month: "long",
-				}) +
-					", " +
-					actualDate.toLocaleTimeString()
+				updateDate()
 			);
 		}, 1000);
 		return () => clearInterval(intervalID);
@@ -55,7 +52,7 @@ const Form = () => {
 		<form className="form" onSubmit={onFormSubmit}>
 			<fieldset className="form__fieldset">
 				<p className="form__date">
-					Dzisiaj jest
+					Dzisiaj jest&nbsp;
 					{dateResult}
 				</p>
 				<h1 className="form__header">Kaltulator walut</h1>
