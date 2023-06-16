@@ -11,7 +11,7 @@ const Clock = () => {
     return () => clearInterval(intervalID);
   }, [date]);
 
-  const formatedDate = date.toLocaleString(undefined, {
+  const formatedDate = (date) => date.toLocaleString(undefined, {
     weekday: "long",
     day: "numeric",
     month: "long",
@@ -23,7 +23,7 @@ const Clock = () => {
   return (
     <p className="clock">
       Dzisiaj jest&nbsp;
-      {formatedDate}
+      {formatedDate(date)}
     </p>
   );
 };
