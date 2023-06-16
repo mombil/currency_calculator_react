@@ -4,7 +4,7 @@ import "./style.css";
 const Clock = () => {
 	const updateDate = () => {
 		let actualDate = new Date();
-		return actualDate.toLocaleString("pl-US", {
+		return actualDate.toLocaleString(undefined, {
 			weekday: "long",
 			day: "numeric",
 			month: "long",
