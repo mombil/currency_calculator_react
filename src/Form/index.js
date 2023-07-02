@@ -1,6 +1,6 @@
 import { useState } from "react";
 import currencies from "./currencies";
-import "./style.css";
+import { StyledForm, H1, Fieldset, Label, Input, Button, P } from "./styled";
 import Clock from "./Clock";
 
 const Form = () => {
@@ -25,15 +25,15 @@ const Form = () => {
 	};
 
 	return (
-		<form className="form" onSubmit={onFormSubmit}>
-			<fieldset className="form__fieldset">
+		<StyledForm onSubmit={onFormSubmit}>
+			<Fieldset>
 				<Clock />
-				<h1 className="form__header">Kaltulator walut</h1>
-				<label className="form__label">
+				<H1>Kaltulator walut</H1>
+				<Label>
 					{" "}
 					Wybierz walutę
-					<select
-						className="form__select"
+					<Input
+						as="select"
 						value={selects}
 						onChange={({ target }) => setSelects(target.value)}
 					>
@@ -42,12 +42,12 @@ const Form = () => {
 								{currency.name}
 							</option>
 						))}
-					</select>
-				</label>
+					</Input>
+				</Label>
 
-				<label className="form__label">
+				<Label>
 					Podaj kwotę w PLN:
-					<input
+					<Input
 						className="form__input"
 						type="number"
 						min="0"
@@ -55,21 +55,21 @@ const Form = () => {
 						value={amount}
 						onChange={({ target }) => setAmount(target.value)}
 					/>
-					<button className="form__button" type="submit">
+					<Button type="submit">
 						Wyślij
-					</button>
-				</label>
+					</Button>
+				</Label>
 
-				<p className="form__text">
+				<P>
 					Kwota po przeliczeniu wynosi:
 					<strong>
 						{typeof result === "string"
 							? " N/A"
 							: " " + result.result.toFixed(2) + " " + result.sign}
 					</strong>
-				</p>
-			</fieldset>
-		</form>
+				</P>
+			</Fieldset>
+		</StyledForm>
 	);
 };
 
