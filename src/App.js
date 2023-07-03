@@ -3,12 +3,12 @@ import Footer from "./Footer";
 import Form from "./Form";
 
 function App() {
-	return (
-		<Container>
-			<Form />
-			<Footer />
-		</Container>
-	);
+  return (
+    <Container>
+      <Form />
+      <Footer />
+    </Container>
+  );
 }
 
 export default App;
