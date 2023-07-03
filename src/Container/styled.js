@@ -1,9 +1,9 @@
 import { styled } from "styled-components";
 
 export const Main = styled.main`
-  max-width: 1000px;
+  max-width: ${({theme}) => theme.breakpoints.largeDevice};
   margin: auto;
-  color: #fff;
+  color: ${({theme}) => theme.colors.primaryColor};
   background-position: center;
   background-size: cover;
 `;

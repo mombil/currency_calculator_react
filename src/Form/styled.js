@@ -7,14 +7,14 @@ export const StyledForm = styled.form`
 export const H1 = styled.h1`
   display: block;
   padding: 10px;
-  background-color: #999;
+  background-color: ${({theme}) => theme.colors.headerColor};
   border-radius: 10px;
   margin: 3px;
   text-align: center;
 `;
 
 export const Fieldset = styled.fieldset`
-  background-color: hsl(180, 84%, 35%);
+  background-color: ${({theme}) => theme.colors.backgroundColor};
   border-radius: 10px;
   padding: 15px, 10px;
 `;
@@ -36,7 +36,7 @@ export const Button = styled.button`
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  background-color: #eee;
+  background-color: ${({theme}) => theme.colors.primaryColor};
   padding: 5px;
   transition: 0.4s;
   margin: 3px;
