@@ -4,7 +4,7 @@ export const StyledForm = styled.form`
   margin: 20px;
 `;
 
-export const H1 = styled.h1`
+export const Header = styled.h1`
   display: block;
   padding: 10px;
   background-color: ${({theme}) => theme.colors.headerColor};
@@ -42,7 +42,7 @@ export const Button = styled.button`
   margin: 3px;
 `;
 
-export const P = styled.p`
+export const Paragraph = styled.p`
   padding: 5px;
   font-size: 18px;
   margin: 3px;
