@@ -17,7 +17,8 @@ On this site you can easly calculate PLN currency to USD, EUR, GBP.
 - BEM
 - React
 - Styled Components
-
+- Axios
+- Api
 
 # Getting Started with Create React App
 
