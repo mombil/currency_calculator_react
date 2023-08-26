@@ -1,20 +1,30 @@
 import { useState } from "react";
-import currencies from "./currencies";
-import { StyledForm, Header, Fieldset, Label, Input, Button, Paragraph } from "./styled";
+import { useApi } from "../useApi";
+import {
+  StyledForm,
+  Header,
+  Fieldset,
+  Label,
+  Input,
+  Button,
+  Paragraph,
+  Loading,
+  Error,
+} from "./styled";
 import Clock from "./Clock";
 
 const Form = () => {
   const [amount, setAmount] = useState(0);
   const [selects, setSelects] = useState("EUR");
   const [result, setResult] = useState("N/A");
+  const currencies = useApi();
 
   const calculateResult = () => {
-    const rate = currencies.find(({ name }) => name === selects).rate;
-    const sign = currencies.find(({ name }) => name === selects).sign;
+    const rate = currencies.rates[selects];
 
     setResult({
-      result: amount / rate,
-      sign: sign,
+      result: amount * rate,
+      name: selects,
     });
   };
 
@@ -29,43 +39,55 @@ const Form = () => {
       <Fieldset>
         <Clock />
         <Header>Kaltulator walut</Header>
-        <Label>
-          {" "}
-          Wybierz walutę
-          <Input
-            as="select"
-            value={selects}
-            onChange={({ target }) => setSelects(target.value)}
-          >
-            {currencies.map(currency => (
-              <option key={currency.key} value={currency.name}>
-                {currency.name}
-              </option>
-            ))}
-          </Input>
-        </Label>
+        {currencies.success === "loading" ? (
+          <Loading>Proszę poczekać. Trwa ładowanie walut.</Loading>
+        ) : currencies.success === "error" ? (
+          <Error>
+            Przepraszamy nie jesteśmy w stanie obsłużyć żądania. Sprawdź
+            połączenie z internetem.
+          </Error>
+        ) : (
+          <>
+            <Label>
+              {" "}
+              Wybierz walutę
+              <Input
+                as="select"
+                value={selects}
+                onChange={({ target }) => setSelects(target.value)}
+              >
+                {Object.keys(currencies.rates).map(currency => (
+                  <option key={currency} value={currency}>
+                    {currency}
+                  </option>
+                ))}
+              </Input>
+            </Label>
+            <Label>
+              Podaj kwotę w PLN:
+              <Input
+                className="form__input"
+                type="number"
+                min="0"
+                step="any"
+                value={amount}
+                onChange={({ target }) => setAmount(target.value)}
+              />
+            </Label>
 
-        <Label>
-          Podaj kwotę w PLN:
-          <Input
-            className="form__input"
-            type="number"
-            min="0"
-            step="any"
-            value={amount}
-            onChange={({ target }) => setAmount(target.value)}
-          />
-          <Button type="submit">Wyślij</Button>
-        </Label>
+            <Button type="submit">Wyślij</Button>
 
-        <Paragraph>
-          Kwota po przeliczeniu wynosi:
-          <strong>
-            {typeof result === "string"
-              ? " N/A"
-              : " " + result.result.toFixed(2) + " " + result.sign}
-          </strong>
-        </Paragraph>
+            <Paragraph>
+              Kwota po przeliczeniu wynosi:
+              <strong>
+                {typeof result === "string"
+                  ? " N/A"
+                  : " " + result.result.toFixed(2) + " " + result.name}
+              </strong>
+            </Paragraph>
+  
+          </>
+        )}
       </Fieldset>
     </StyledForm>
   );
