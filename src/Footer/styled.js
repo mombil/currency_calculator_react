@@ -6,7 +6,7 @@ export const StyledFooter = styled.footer`
 	padding: 10px 5px;
 	background-color: ${({theme}) => theme.colors.primaryColor};
 	border-radius: 10px;
-	max-width: 200px;
+	max-width: 400px;
 	text-align: center;
 	margin: auto;
 `
