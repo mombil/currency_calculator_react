@@ -1,9 +1,14 @@
 import { StyledFooter } from "./styled";
+import { useApi } from "../useApi";
 
-const Footer = () => (
-  <StyledFooter className="footer">
-    Wartość walut z dnia 03.02.2022{" "}
-  </StyledFooter>
-);
+const Footer = () => {
+  const date = useApi()
+  return (
+    <StyledFooter className="footer">
+      Dane pobierane są z Europejskiego Banku Centralnego.
+      Wartość walut z dnia {date.date}
+    </StyledFooter>
+  );
+};
 
 export default Footer;
