@@ -30,8 +30,10 @@ const Form = () => {
 
   const onFormSubmit = event => {
     event.preventDefault();
-    calculateResult();
-    setAmount(amount);
+    if (amount) {
+      calculateResult();
+      setAmount(amount);
+    }
   };
 
   return (
@@ -85,7 +87,6 @@ const Form = () => {
                   : " " + result.result.toFixed(2) + " " + result.name}
               </strong>
             </Paragraph>
-  
           </>
         )}
       </Fieldset>

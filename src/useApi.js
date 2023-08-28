@@ -9,7 +9,7 @@ export const useApi = () => {
       try {
         await axios
           .get(apiURL)
-          .then(response => setCurrencies(response.data));
+          .then(response => setCurrencies({ ...response.data, requestState: "success" }));
           
       } catch (error) {
         setCurrencies({ requestState: "error" });
