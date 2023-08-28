@@ -39,9 +39,9 @@ const Form = () => {
       <Fieldset>
         <Clock />
         <Header>Kaltulator walut</Header>
-        {currencies.success === "loading" ? (
+        {currencies.requestState === "loading" ? (
           <Loading>Proszę poczekać. Trwa ładowanie walut.</Loading>
-        ) : currencies.success === "error" ? (
+        ) : currencies.requestState === "error" ? (
           <Error>
             Przepraszamy nie jesteśmy w stanie obsłużyć żądania. Sprawdź
             połączenie z internetem.

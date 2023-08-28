@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export const useApi = () => {
-  const [currencies, setCurrencies] = useState({ success: "loading" });
+  const [currencies, setCurrencies] = useState({ requestState: "loading" });
 
   useEffect(() => {
     const fetchCurrencies = async () => {
@@ -12,7 +12,7 @@ export const useApi = () => {
           .then(response => setCurrencies(response.data));
           
       } catch (error) {
-        setCurrencies({ success: "error" });
+        setCurrencies({ requestState: "error" });
       }
     };
 
